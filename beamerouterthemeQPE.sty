@@ -1,0 +1,153 @@
+% Beamer Outer Theme for QPE at KUT
+% Copyright 2021 by Yuki Yanai <yanai.yuki@kochi-tech.ac.jp>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\ProvidesPackage{beamerouterthemeQPE}[07/22/2021]
+
+\mode<presentation>
+
+%=========================================================%
+% Logo
+%=========================================================%
+\pgfdeclareimage[height=2em,interpolate=true]{logomark}{yanailab_logo.png}
+\pgfdeclareimage[height=4.5em,interpolate=true]{titlelogo}{yanailab_title.png}
+
+\titlegraphic{\pgfuseimage{titlelogo}}
+
+
+%=========================================================%
+% Colors and Shades
+%=========================================================%
+\setbeamercolor{section in head/foot}{parent=palette quaternary}
+\setbeamercolor{subsection in head/foot}{parent=palette primary}
+\setbeamercolor{author in head/foot}{parent=palette primary}
+\setbeamercolor{title in head/foot}{parent=palette tertiary}
+\setbeamercolor{date in head/foot}{parent=palette primary}
+
+\usesectionheadtemplate
+  {\hfill\insertsectionhead}
+  {\hfill\color{fg!50!bg}\insertsectionhead}
+\pgfdeclarehorizontalshading[frametitle.bg,frametitle right.bg]{beamer@frametitleshade}{\paperheight}{
+  color(0pt)=(frametitle.bg);
+  color(\paperwidth)=(frametitle right.bg)}
+\AtBeginDocument{
+  \pgfdeclareverticalshading{beamer@topshade}{\paperwidth}{
+    color(0pt)=(bg);
+    color(4pt)=(black!50!bg)}
+}
+\AtBeginSection{}
+
+%=========================================================%
+% Title Page
+%=========================================================%
+\defbeamertemplate*{title page}{simple}[1][]{
+  \thispagestyle{empty}
+  \vspace{2em}
+  {}
+  \begin{beamercolorbox}[rounded=true,sep=4pt]{palette primary}
+    \centering
+    \usebeamerfont{title}\inserttitle\par
+    \vspace{4pt}
+    \usebeamerfont{subtitle}\insertsubtitle\par
+  \end{beamercolorbox}
+  \bigskip
+  \begin{center}
+    \usebeamerfont{author}\insertauthor\par
+    \vspace{6pt}
+    \usebeamerfont{institute}\insertinstitute\par
+    \vspace{6pt}    
+    \usebeamerfont{date}\insertdate\par
+    \vspace{6pt}   
+    \usebeamerfont{institute}\inserttitlegraphic\par
+  \end{center} 
+}
+
+%=========================================================%
+% Header
+%=========================================================%
+\newif\ifbeamer@theme@subsection
+\beamer@theme@subsectiontrue
+
+\DeclareOptionBeamer{footline}{\csname beamer@theme@footline@#1\endcsname}
+\DeclareOptionBeamer{subsection}[true]{\csname beamer@theme@subsection#1\endcsname}
+\ProcessOptionsBeamer
+
+\defbeamertemplate*{headline}{QPE theme}
+{%
+  \begin{beamercolorbox}{section in head/foot}
+    \vskip2pt\insertnavigation{\paperwidth}\vskip2pt
+  \end{beamercolorbox}%
+}
+
+%=========================================================%
+% Footer
+%=========================================================%
+\defbeamertemplate*{footline}{QPE theme}
+{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,sep=0pt,center]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\insertshortauthor~(\insertshortinstitute)
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,sep=0pt,center]{title in head/foot}
+      \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.25\paperwidth,ht=2.25ex,dp=1ex,sep=0pt,center]{date
+     in head/foot}
+      \insertframenumber{}  / \inserttotalframenumber\hspace*{1ex}
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+%=========================================================%
+% Frame Title
+%=========================================================%
+\defbeamertemplate*{frametitle}{QPE theme}
+{%
+ \nointerlineskip%
+  \hbox{\leavevmode%
+    \advance\beamer@leftmargin by -12bp%
+    \advance\beamer@rightmargin by -12bp%
+    \beamer@tempdim=\paperwidth%
+    \advance\beamer@tempdim by \beamer@leftmargin%
+    \advance\beamer@tempdim by \beamer@rightmargin%
+    \hskip-2em\hbox{%
+      \setbox\beamer@tempbox=\hbox{%
+        \begin{minipage}[t]{0.9\paperwidth}%
+          \vbox{}%
+          \vskip0ex%
+          \leftskip0.5cm%
+          \rightskip0.3cm plus1fil\leavevmode%
+          \insertframetitle%
+          \vskip-1.75ex%
+          \vbox{}%
+        \end{minipage}%
+        \begin{minipage}[t]{0.1\paperwidth}         
+          \vbox to 0pt{\vskip1mm
+            \pgfuseimage{logomark}
+             \vss}
+        \end{minipage}
+    }
+    \beamer@tempdim=\ht\beamer@tempbox
+      \advance\beamer@tempdim by 4pt
+      \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@tempdim}
+        \usebeamercolor{frametitle right}
+        \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+        \pgfusepath{clip}
+        \pgftext[left,bottom]{\pgfuseshading{beamer@frametitleshade}}
+      \end{pgfpicture}%
+      \hskip-\paperwidth%
+      \box\beamer@tempbox%
+    }%
+    \hskip-\Gm@rmargin%
+  }%
+  \nointerlineskip
+}
+
+\mode
+<all>

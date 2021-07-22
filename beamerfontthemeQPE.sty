@@ -1,0 +1,47 @@
+% Beamer Font Theme for Kochi University of Technology (KUT),
+% Copyright 2021 by Yuki Yanai <yanai.yuki@kochi-tech.ac.jp>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\ProvidesPackage{beamerfontthemeQPE}[07/22/2021]
+
+\mode<presentation>
+
+\beamer@suppressreplacementstrue
+
+\usepackage{luatexja}
+\usepackage[ipaex,deluxe]{luatexja-preset}
+
+% 英文はサンセリフ体
+\renewcommand{\familydefault}{\sfdefault}
+% 数式はセリフ体
+\usefonttheme{professionalfonts}
+% 日本語はすべてゴシック
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+% フレームタイトルは太字
+\setbeamerfont{frametitle}{size=\Large, family=\gtfamily, series=\bfseries}
+
+% itemize，enumerate のサイズ
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+% 行間を広げる
+\renewcommand{\baselinestretch}{1.2}
+% 別行立て数式環境の行間も広げる
+\def\defaultabovedisplayskip{8pt}
+\def\defaultbelowdisplayskip{8pt}
+\setlength{\abovedisplayskip}{\defaultabovedisplayskip}
+\setlength{\belowdisplayskip}{\defaultbelowdisplayskip}
+
+
+\setbeamerfont{tiny structure}{series=\mdseries,size=\tiny}
+\setbeamerfont{frametitle}{size=\Large, family=\gtfamily, series=\bfseries}
+\setbeamerfont{framesubtitle}{size=\large}
+\setbeamerfont*{footline}{size=\Tiny}
+\setbeamerfont*{date}{size=\scriptsize}
+
+\mode
+<all>
+
+\endinput

@@ -1,0 +1,29 @@
+% Beamer theme for QPE at KUT
+% Copyright 2021 by Yuki Yanai <yanai.yuki@kochi-tech.ac.jp>
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+
+\ProvidesPackage{beamerthemeQPE}[07/22/2021]
+\def\beamerKUT@version{0.01}
+
+\mode<presentation>
+
+\ProcessOptionsBeamer
+
+\useinnertheme{circles}
+\setbeamertemplate{blocks}[rounded]
+
+\usecolortheme{bonito}
+\useoutertheme{QPE}
+\usefonttheme{QPE}
+
+\mode
+<all>
+
+
+\usepackage{caption}
+\captionsetup[table]{labelformat=empty}
+\usepackage{graphicx,color}
