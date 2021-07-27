@@ -24,9 +24,9 @@
 %=========================================================%
 \setbeamercolor{section in head/foot}{parent=palette quaternary}
 \setbeamercolor{subsection in head/foot}{parent=palette primary}
-\setbeamercolor{author in head/foot}{parent=palette primary}
+\setbeamercolor{author in head/foot}{parent=palette quaternary}
 \setbeamercolor{title in head/foot}{parent=palette tertiary}
-\setbeamercolor{date in head/foot}{parent=palette primary}
+\setbeamercolor{date in head/foot}{parent=palette quaternary}
 
 \usesectionheadtemplate
   {\hfill\insertsectionhead}
@@ -70,11 +70,11 @@
 %=========================================================%
 % Header
 %=========================================================%
-\newif\ifbeamer@theme@subsection
-\beamer@theme@subsectiontrue
+%\newif\ifbeamer@theme@subsection
+%\beamer@theme@subsectiontrue
 
 \DeclareOptionBeamer{footline}{\csname beamer@theme@footline@#1\endcsname}
-\DeclareOptionBeamer{subsection}[true]{\csname beamer@theme@subsection#1\endcsname}
+%\DeclareOptionBeamer{subsection}[true]{\csname beamer@theme@subsection#1\endcsname}
 \ProcessOptionsBeamer
 
 \defbeamertemplate*{headline}{QPE theme}
@@ -149,6 +149,20 @@
   }%
   \nointerlineskip
 }
+
+
+%=========================================================%
+% itemize symbols
+%=========================================================%
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}{\raisebox{0.2em}{\scalebox{0.6}{$\blacktriangleright$}}}
+\setbeamertemplate{itemize subsubitem}[square]
+
+\setbeamercolor{item projected}{bg=qpeblue,fg=white}
+\setbeamertemplate{enumerate item}[circle]
+\setbeamertemplate{enumerate subitem}{\roman{enumii}}
+\setbeamertemplate{enumerate subsubitem}{\alph{enumiii}}
+
 
 \mode
 <all>

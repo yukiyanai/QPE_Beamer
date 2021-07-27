@@ -6,30 +6,33 @@
 % 1. under the LaTeX Project Public License and/or
 % 2. under the GNU Public License.
 
-\ProvidesPackage{beamercolorthemebonito}[07/22/2021]
+\ProvidesPackage{beamercolorthemebonito}[07/27/2021]
 
 \mode<presentation>
 
 \definecolor{qpeblue}{RGB}{69, 142, 247}
 \definecolor{kutgray}{RGB}{77, 77, 77} 
+\definecolor{kutalert}{RGB}{196, 0, 0}  % for alert
+\definecolor{bggray}{RGB}{222, 222, 222} % background gray
+\definecolor{bgdark}{RGB}{63, 63, 63} % darg gray for bg
 
-\definecolor{myred}{RGB}{196, 0, 0}  % for alert
+\setbeamercolor{background canvas}{bg=bggray}
 
-\setbeamercolor*{normal text}{fg=black,bg=white}
-\setbeamercolor*{alerted text}{fg=myred}
+\setbeamercolor*{normal text}{fg=black}
+\setbeamercolor*{alerted text}{fg=kutalert}
 \setbeamercolor*{example text}{fg=kutgray}
-\setbeamercolor*{structure}{fg=qpeblue,bg=white}
+\setbeamercolor*{structure}{fg=qpeblue}
 
 \setbeamerfont{alerted text}{series=\bfseries}
 
 \setbeamercolor*{palette primary}{fg=white,bg=qpeblue}
-\setbeamercolor*{palette secondary}{fg=qpeblue,bg=white}
+\setbeamercolor*{palette secondary}{fg=qpeblue,bg=bggray}
 \setbeamercolor*{palette tertiary}{fg=kutgray,bg=white}
-\setbeamercolor*{palette quaternary}{fg=kutgray,bg=white}
+\setbeamercolor*{palette quaternary}{fg=white,bg=kutgray}
 
-\setbeamercolor{titlelike}{fg=white, bg=qpeblue}
-\setbeamercolor{frametitle}{fg=qpeblue, bg=white}
-\setbeamercolor{frametitle right}{fg=kutgray, bg=white}
+\setbeamercolor{titlelike}{fg=white, bg=bggray}
+\setbeamercolor{frametitle}{fg=qpeblue}
+\setbeamercolor{frametitle right}{fg=black}
 
 \setbeamercolor{sidebar}{bg=qpeblue}
 
@@ -41,11 +44,13 @@
 \setbeamercolor*{item projected}{fg=black,bg=black!20}
 
 \setbeamercolor{block title}{fg=white,bg=qpeblue}
-\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=myred}
-\setbeamercolor{block title example}{use=example text,fg=white,bg=kutgray}
 \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!15!bg}
+
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=kutalert}
 \setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!15!bg}
-\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!15!bg}
+
+\setbeamercolor{block title example}{use=example text,fg=white,bg=kutgray}
+\setbeamercolor{block body example}{use=block title example,fg=black,bg=bgdark!30!bg}
 
 \setbeamercolor*{separation line}{}
 \setbeamercolor*{fine separation line}{}
